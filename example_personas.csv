@@ -1,0 +1,6 @@
+id,role,department,gender,age_range,experience,location,team_size
+CTO_001,Chief Technology Officer,Engineering,Male,45-54,Over 15 years,USA,Over 20 employees
+VP_002,VP of Product,Product,Female,35-44,Over 10 years,Canada,Over 20 employees
+DS_003,Senior Data Scientist,Data Science,Non-binary,25-34,5-10 years,Netherlands,5-10 employees
+UX_004,UX Design Lead,Design,Female,35-44,Over 10 years,Germany,10-20 employees
+PM_005,Junior Product Manager,Product,Male,25-34,2-5 years,UK,0-5 employees

@@ -1,0 +1,4 @@
+id,role,department,gender,age_range,experience,location,team_size
+PM_CUSTOM_001,Product Manager,Product,Female,35-44,Over 10 years,USA,10-20 employees
+SE_CUSTOM_002,Software Engineer,Engineering,Male,25-34,5-10 years,Germany,0-5 employees
+MM_CUSTOM_003,Marketing Manager,Marketing,Non-binary,45-54,Over 15 years,Canada,Over 20 employees
