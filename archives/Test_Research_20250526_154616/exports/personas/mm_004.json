@@ -1,0 +1,114 @@
+{
+  "persona_id": "MM_004",
+  "demographics": {
+    "role": "Marketing Manager",
+    "department": "Marketing",
+    "gender": "Female",
+    "age_range": "25-34",
+    "experience": "5-10 years",
+    "location": "Australia",
+    "team_size": "0-5 employees"
+  },
+  "metadata": {
+    "created_at": "2025-05-26T14:06:32.034547",
+    "last_updated": "2025-05-26T14:34:12.358858"
+  },
+  "survey_responses": {
+    "9": {
+      "question": "How Tech Savvy do you consider yourself to be?",
+      "response": "4",
+      "type": "scale"
+    },
+    "10": {
+      "question": "How familiar are you with generative AI technologies, such as ChatGPT?",
+      "response": "4",
+      "type": "scale"
+    },
+    "11": {
+      "question": "Which Generative AI based tools do you regularly use in your work?",
+      "response": "In my role as a marketing manager, I've found generative AI tools to be quite beneficial in streamlining our creative processes. I regularly use tools like Jasper.ai for content creation, which helps in drafting engaging copy for campaigns and social media posts. Additionally, Canva's AI features are great for designing visuals quickly. These tools not only boost productivity but also allow my small team to focus on more strategic tasks, enhancing our overall marketing efforts. Given my experien",
+      "type": "open-ended"
+    },
+    "12": {
+      "question": "When have you started using those tools?",
+      "response": "Before 2023",
+      "type": "multiple choice"
+    },
+    "13": {
+      "question": "Was the use of AI tools suggested by your manager or was it your own idea?",
+      "response": "My Idea",
+      "type": "multiple choice"
+    },
+    "14": {
+      "question": "Which tasks do you use generative AI for?",
+      "response": "As a marketing manager with 5-10 years of experience, I use generative AI primarily for content creation and ideation. It helps me draft blog posts, social media content, and email campaigns. I also leverage it for data analysis to gain insights into consumer behavior and trends, which informs our marketing strategies. Additionally, AI tools assist in personalizing customer interactions by generating tailored recommendations and responses, enhancing our overall customer engagement. Being based i",
+      "type": "open-ended"
+    },
+    "15": {
+      "question": "Which tasks do you not think generative AI tools are suitable for as part of your job?",
+      "response": "As a marketing manager with several years of experience, I've found that while generative AI tools are incredibly useful for tasks like content creation and data analysis, they fall short in areas that require deep understanding of brand identity and human emotions. Tasks such as developing a long-term marketing strategy, establishing brand positioning, and creating campaigns that resonate on a personal level still heavily rely on human intuition and creativity. These tasks require a nuanced und",
+      "type": "open-ended"
+    },
+    "16": {
+      "question": "What is your most common reaction toward generative AI's performance?",
+      "response": "4",
+      "type": "scale"
+    },
+    "17": {
+      "question": "What are your main concerns regarding the use of AI in your work?",
+      "response": "As a marketing manager with considerable experience, one of my main concerns regarding the use of AI in my work is maintaining the balance between automation and the human touch that is essential in marketing. While AI can significantly enhance data analysis and optimize campaigns, there's a risk of losing the personalized and creative aspects that resonate with audiences. Additionally, I worry about data privacy and ensuring that AI tools comply with regulations, as mishandling customer data ca",
+      "type": "open-ended"
+    },
+    "18": {
+      "question": "How would you describe your sentiment towards generative AI?",
+      "response": "Excitement",
+      "type": "multiple choice"
+    },
+    "19": {
+      "question": "How are you currently upskilling or reskilling to adapt to the changing technological landscape?",
+      "response": "As a marketing manager with several years of experience, I recognize the importance of staying updated with the latest technological advancements that impact our industry. To adapt to the changing landscape, I am actively participating in online courses that focus on digital marketing trends, data analytics, and AI in marketing. Additionally, I regularly attend webinars and industry conferences here in Australia to network with peers and learn from experts. These efforts not only enhance my tech",
+      "type": "open-ended"
+    },
+    "20": {
+      "question": "Are you concerned about any ethical issues with respect to the use of generative AI in the workplace?",
+      "response": "As a marketing manager with several years of experience, I do have some concerns about the ethical implications of using generative AI in the workplace. One key issue is the potential for AI to create content that lacks authenticity or misrepresents brand values, which could lead to a loss of trust with our audience. Additionally, there's the concern of intellectual property rights and ensuring that the AI-generated content doesn't infringe on existing works. Finally, I think it's important to c",
+      "type": "open-ended"
+    },
+    "21": {
+      "question": "What is the impact of AI on productivity of employees in the new age?",
+      "response": "4",
+      "type": "scale"
+    },
+    "22": {
+      "question": "What should society do to prepare for the impact of AI and automation on the job market?",
+      "response": "Invest in education and training programs, Implement policies to support workers affected by job displacement, Encourage ethical AI development and deployment, Promote international cooperation on AI governance",
+      "type": "checkbox"
+    },
+    "23": {
+      "question": "Do you believe that governments are doing enough to address the challenges and opportunities presented by AI?",
+      "response": "3",
+      "type": "scale"
+    },
+    "24": {
+      "question": "How is your organization adapting to the rise of AI and automation?",
+      "response": "As a marketing manager with several years of experience in Australia, I've observed that our organization is gradually integrating AI and automation to enhance our marketing strategies. We're leveraging AI tools for data analysis to gain deeper insights into consumer behavior and preferences, which allows us to tailor our campaigns more effectively. Additionally, automation is helping streamline repetitive tasks, like email marketing and social media scheduling, freeing up our team to focus on m",
+      "type": "open-ended"
+    },
+    "25": {
+      "question": "What role should businesses play in addressing the societal challenges posed by AI?",
+      "response": "As a marketing manager with several years of experience, I believe businesses have a significant role in addressing societal challenges posed by AI. Companies should prioritize ethical AI use by ensuring transparency in their AI systems and algorithms. This involves being clear about how AI is used in consumer interactions and the data it collects. Businesses should also focus on educating both their employees and customers about AI's capabilities and limitations to foster trust and informed usa",
+      "type": "open-ended"
+    },
+    "26": {
+      "question": "Should AI continue to be developed?",
+      "response": "Yes",
+      "type": "multiple choice"
+    }
+  },
+  "survey_metadata": {
+    "survey_id": "ai_adoption_20250526_143222",
+    "completion_time_seconds": 0,
+    "total_questions": 18,
+    "successful_responses": 18
+  }
+}

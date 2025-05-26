@@ -1,0 +1,65 @@
+{
+  "research_name": "Test_Research",
+  "description": "Testing the archive functionality",
+  "archive_created": "2025-05-26T15:46:16.606480",
+  "archive_name": "Test_Research_20250526_154616",
+  "statistics": {
+    "total_personas": 12,
+    "personas_with_surveys": 12,
+    "total_survey_responses": 12,
+    "exported_files": {
+      "individual_json": 12,
+      "individual_csv": 12,
+      "master_json": 1,
+      "analysis_csv": 1
+    }
+  },
+  "personas_summary": {
+    "roles": {
+      "Product Manager": 2,
+      "Software Engineer": 2,
+      "Marketing Manager": 2,
+      "Sales Director": 1,
+      "Chief Technology Officer": 1,
+      "VP of Product": 1,
+      "Senior Data Scientist": 1,
+      "UX Design Lead": 1,
+      "Junior Product Manager": 1
+    },
+    "departments": {
+      "Product": 4,
+      "Engineering": 3,
+      "Marketing": 2,
+      "Sales": 1,
+      "Data Science": 1,
+      "Design": 1
+    },
+    "locations": {
+      "France": 1,
+      "India": 1,
+      "Australia": 1,
+      "USA": 3,
+      "Germany": 2,
+      "Canada": 2,
+      "Netherlands": 1,
+      "UK": 1
+    },
+    "age_ranges": {
+      "55-64": 1,
+      "45-54": 3,
+      "25-34": 5,
+      "35-44": 3
+    },
+    "experience_levels": {
+      "Over 10 years": 4,
+      "5-10 years": 4,
+      "Over 15 years": 3,
+      "2-5 years": 1
+    }
+  },
+  "survey_summary": {
+    "total_surveys_completed": 12,
+    "personas_with_surveys": 12,
+    "personas_without_surveys": 0
+  }
+}

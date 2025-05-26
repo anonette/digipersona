@@ -1,0 +1,114 @@
+{
+  "persona_id": "PM_CUSTOM_001",
+  "demographics": {
+    "role": "Product Manager",
+    "department": "Product",
+    "gender": "Female",
+    "age_range": "35-44",
+    "experience": "Over 10 years",
+    "location": "USA",
+    "team_size": "10-20 employees"
+  },
+  "metadata": {
+    "created_at": "2025-05-26T14:11:27.477450",
+    "last_updated": "2025-05-26T14:35:26.232755"
+  },
+  "survey_responses": {
+    "9": {
+      "question": "How Tech Savvy do you consider yourself to be?",
+      "response": "5",
+      "type": "scale"
+    },
+    "10": {
+      "question": "How familiar are you with generative AI technologies, such as ChatGPT?",
+      "response": "4",
+      "type": "scale"
+    },
+    "11": {
+      "question": "Which Generative AI based tools do you regularly use in your work?",
+      "response": "As a product manager with over a decade of experience, I regularly use several generative AI tools to streamline processes and enhance productivity. One of the primary tools I rely on is OpenAI's ChatGPT for brainstorming sessions and drafting initial versions of product documentation. It helps in generating creative ideas and providing quick insights, which is particularly useful given the fast-paced nature of the tech industry. I also use tools like Midjourney for creating visual prototypes, w",
+      "type": "open-ended"
+    },
+    "12": {
+      "question": "When have you started using those tools?",
+      "response": "Before 2023",
+      "type": "multiple choice"
+    },
+    "13": {
+      "question": "Was the use of AI tools suggested by your manager or was it your own idea?",
+      "response": "My Idea",
+      "type": "multiple choice"
+    },
+    "14": {
+      "question": "Which tasks do you use generative AI for?",
+      "response": "As a product manager with over a decade of experience, I leverage generative AI primarily for brainstorming and ideation sessions. It helps in quickly generating a range of product concepts and features that can then be refined by my team. Additionally, I utilize AI tools for drafting initial versions of product documentation and marketing content, which saves time and allows us to focus on strategy and innovation. It’s also a useful tool for analyzing customer feedback and identifying trends, w",
+      "type": "open-ended"
+    },
+    "15": {
+      "question": "Which tasks do you not think generative AI tools are suitable for as part of your job?",
+      "response": "In my role as a product manager, I find that generative AI tools are less suitable for tasks that require deep emotional intelligence and nuanced human understanding, such as team leadership and stakeholder relationship management. While AI can assist with data analysis and pattern recognition, it lacks the ability to effectively navigate the complexities of human emotions and motivations that are critical when managing a team of 10-20 employees. Additionally, strategic decision-making often req",
+      "type": "open-ended"
+    },
+    "16": {
+      "question": "What is your most common reaction toward generative AI's performance?",
+      "response": "4",
+      "type": "scale"
+    },
+    "17": {
+      "question": "What are your main concerns regarding the use of AI in your work?",
+      "response": "As a product manager with over 10 years of experience, my main concerns regarding the use of AI in my work revolve around ethical implications, data privacy, and transparency. Ensuring that AI models are trained on unbiased data and operate without perpetuating existing biases is crucial. Furthermore, maintaining user trust is paramount, so it's essential to safeguard personal data and communicate clearly about how AI is being used in our products. Lastly, it's important to balance automation wi",
+      "type": "open-ended"
+    },
+    "18": {
+      "question": "How would you describe your sentiment towards generative AI?",
+      "response": "Excitement",
+      "type": "multiple choice"
+    },
+    "19": {
+      "question": "How are you currently upskilling or reskilling to adapt to the changing technological landscape?",
+      "response": "As a product manager with over a decade of experience, I prioritize staying current with the evolving technological landscape to effectively lead my team. I engage in continuous learning through online courses and webinars focused on emerging trends such as AI and machine learning, which are increasingly influencing product development. Additionally, I participate in industry conferences and networking events to exchange insights with other professionals. Mentoring my team also provides me with ",
+      "type": "open-ended"
+    },
+    "20": {
+      "question": "Are you concerned about any ethical issues with respect to the use of generative AI in the workplace?",
+      "response": "As a product manager with over a decade of experience, I'm certainly aware of the ethical considerations surrounding the use of generative AI in the workplace. One significant concern is ensuring that AI systems are trained on diverse and unbiased datasets to prevent the perpetuation of existing biases. Additionally, there's the issue of transparency and accountability; it's crucial that AI-generated outputs are explainable and that there is a clear understanding of who is responsible for decisi",
+      "type": "open-ended"
+    },
+    "21": {
+      "question": "What is the impact of AI on productivity of employees in the new age?",
+      "response": "4",
+      "type": "scale"
+    },
+    "22": {
+      "question": "What should society do to prepare for the impact of AI and automation on the job market?",
+      "response": "Invest in education and training programs, Implement policies to support workers affected by job displacement, Encourage ethical AI development and deployment, Promote international cooperation on AI governance",
+      "type": "checkbox"
+    },
+    "23": {
+      "question": "Do you believe that governments are doing enough to address the challenges and opportunities presented by AI?",
+      "response": "3",
+      "type": "scale"
+    },
+    "24": {
+      "question": "How is your organization adapting to the rise of AI and automation?",
+      "response": "As a product manager with over a decade of experience, I've witnessed my organization actively embracing AI and automation to enhance our product offerings and streamline internal processes. Our approach is twofold: firstly, we are integrating AI-driven features into our products to deliver more personalized and efficient user experiences. This involves leveraging machine learning algorithms to analyze user data and provide insights that drive innovation. Secondly, internally, we are automating ",
+      "type": "open-ended"
+    },
+    "25": {
+      "question": "What role should businesses play in addressing the societal challenges posed by AI?",
+      "response": "As a product manager with over a decade of experience, I believe businesses have a critical role in addressing societal challenges posed by AI. Firstly, companies should prioritize ethical AI development by implementing robust guidelines that ensure transparency, fairness, and accountability. This means actively working to eliminate biases in data and algorithms, which can perpetuate inequality.\n\nFurthermore, businesses should engage in open dialogue with stakeholders, including policymakers, in",
+      "type": "open-ended"
+    },
+    "26": {
+      "question": "Should AI continue to be developed?",
+      "response": "Yes",
+      "type": "multiple choice"
+    }
+  },
+  "survey_metadata": {
+    "survey_id": "ai_adoption_20250526_143222",
+    "completion_time_seconds": 0,
+    "total_questions": 18,
+    "successful_responses": 18
+  }
+}

@@ -19,6 +19,7 @@ from personas import PersonaGenerator, PersonaDatabase, PersonaImporter
 from survey import SurveyEngine
 from data import DataExporter
 from ai import GPTClient
+from research import ResearchArchiver
 
 def setup_environment():
     """Setup and validate environment"""
@@ -196,6 +197,123 @@ def run_survey(personas_limit: int = None, test_mode: bool = False):
         result = engine.test_single_persona(test_persona, question_limit=3)
         print(f"✓ Test completed for {test_persona.id}")
         return [result]
+def archive_research(research_name: str, description: str = ""):
+    """Archive current research data"""
+    print(f"\nArchiving research: {research_name}")
+    
+    try:
+        archiver = ResearchArchiver()
+        result = archiver.create_archive(research_name, description)
+        
+        print(f"✅ Research archived successfully!")
+        print(f"Archive name: {result['archive_name']}")
+        print(f"Archive path: {result['archive_path']}")
+        print(f"Personas archived: {result['personas_count']}")
+        print(f"Surveys archived: {result['surveys_count']}")
+        
+        return result
+        
+    except Exception as e:
+        print(f"✗ Archive failed: {e}")
+        return None
+
+def clear_research(confirm: bool = False):
+    """Clear current research data"""
+    if not confirm:
+        print("⚠️  This will permanently delete all current research data!")
+        print("Use --confirm flag to proceed: python src/main.py clear-research --confirm")
+        return None
+    
+    print("\nClearing current research data...")
+    
+    try:
+        archiver = ResearchArchiver()
+        result = archiver.clear_current_research(confirm=True)
+        
+        print(f"✅ Research data cleared!")
+        print(f"Personas removed: {result['cleared_personas']}")
+        print("Database and output files cleared")
+        print("Ready for new research!")
+        
+        return result
+        
+    except Exception as e:
+        print(f"✗ Clear failed: {e}")
+        return None
+
+def archive_and_clear_research(research_name: str, description: str = ""):
+    """Archive current research and clear for new research"""
+    print(f"\nArchiving and clearing research: {research_name}")
+    
+    try:
+        archiver = ResearchArchiver()
+        result = archiver.archive_and_clear(research_name, description)
+        
+        print(f"🎉 Research archived and cleared!")
+        print(f"Archive: {result['archive_name']}")
+        print(f"Archived: {result['archived_personas']} personas, {result['archived_surveys']} surveys")
+        print(f"Cleared: {result['cleared_personas']} personas")
+        print("System ready for new research!")
+        
+        return result
+        
+    except Exception as e:
+        print(f"✗ Archive and clear failed: {e}")
+        return None
+
+def list_research_archives():
+    """List all available research archives"""
+    print("\nAvailable Research Archives:")
+    
+    try:
+        archiver = ResearchArchiver()
+        archives = archiver.list_archives()
+        
+        if not archives:
+            print("No archives found.")
+            return []
+        
+        print(f"Found {len(archives)} archives:\n")
+        
+        for i, archive in enumerate(archives, 1):
+            print(f"{i}. {archive['research_name']}")
+            print(f"   Archive: {archive['archive_name']}")
+            print(f"   Created: {archive['created_at']}")
+            print(f"   Personas: {archive['personas_count']}, Surveys: {archive['surveys_count']}")
+            if archive['description']:
+                print(f"   Description: {archive['description']}")
+            print(f"   Path: {archive['archive_path']}")
+            print()
+        
+        return archives
+        
+    except Exception as e:
+        print(f"✗ List archives failed: {e}")
+        return []
+
+def restore_research_archive(archive_name: str, confirm: bool = False):
+    """Restore research from archive"""
+    if not confirm:
+        print("⚠️  This will overwrite all current research data!")
+        print("Use --confirm flag to proceed: python src/main.py restore-archive --name archive_name --confirm")
+        return None
+    
+    print(f"\nRestoring research from archive: {archive_name}")
+    
+    try:
+        archiver = ResearchArchiver()
+        result = archiver.restore_archive(archive_name)
+        
+        print(f"🎉 Research restored successfully!")
+        print(f"Archive: {result['archive_name']}")
+        print(f"Restored: {result['restored_personas']} personas")
+        print("Research data is now active!")
+        
+        return result
+        
+    except Exception as e:
+        print(f"✗ Restore failed: {e}")
+        return None
     else:
         # Run full survey
         def progress_callback(persona_idx, total_personas, persona_id, question_num, total_questions):
@@ -282,7 +400,8 @@ def main():
     parser = argparse.ArgumentParser(description="Digital Persona Survey System")
     parser.add_argument("command", choices=[
         "setup", "test-api", "generate", "survey", "test-survey", "export", "status", "full-run",
-        "import-csv", "import-json", "create-template", "create-persona"
+        "import-csv", "import-json", "create-template", "create-persona",
+        "archive-research", "clear-research", "archive-and-clear", "list-archives", "restore-archive"
     ], help="Command to execute")
     
     parser.add_argument("--count", type=int, default=10, help="Number of personas to generate")
@@ -290,6 +409,9 @@ def main():
     parser.add_argument("--balanced", action="store_true", help="Generate balanced demographics")
     parser.add_argument("--file", type=str, help="File path for import operations")
     parser.add_argument("--template", type=str, default="csv", help="Template type (csv)")
+    parser.add_argument("--name", type=str, help="Research name for archive operations")
+    parser.add_argument("--description", type=str, default="", help="Description for research archive")
+    parser.add_argument("--confirm", action="store_true", help="Confirm destructive operations")
     
     args = parser.parse_args()
     
@@ -336,6 +458,29 @@ def main():
     
     elif args.command == "create-persona":
         create_manual_persona()
+    elif args.command == "archive-research":
+        if not args.name:
+            print("✗ Please specify research name with --name parameter")
+        else:
+            archive_research(args.name, args.description)
+    
+    elif args.command == "clear-research":
+        clear_research(args.confirm)
+    
+    elif args.command == "archive-and-clear":
+        if not args.name:
+            print("✗ Please specify research name with --name parameter")
+        else:
+            archive_and_clear_research(args.name, args.description)
+    
+    elif args.command == "list-archives":
+        list_research_archives()
+    
+    elif args.command == "restore-archive":
+        if not args.name:
+            print("✗ Please specify archive name with --name parameter")
+        else:
+            restore_research_archive(args.name, args.confirm)
     
     elif args.command == "status":
         show_status()

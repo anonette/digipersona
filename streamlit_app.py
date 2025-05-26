@@ -588,13 +588,16 @@ def show_analytics():
     """Analytics and results page"""
     st.title("📈 Analytics & Results")
     
-    tab1, tab2 = st.tabs(["📊 Demographics", "📁 Export Data"])
+    tab1, tab2, tab3 = st.tabs(["📊 Demographics", "📁 Export Data", "🗄️ Research Archive"])
     
     with tab1:
         show_demographics_analytics()
     
     with tab2:
         show_export_interface()
+    
+    with tab3:
+        show_research_archive()
 
 def show_demographics_analytics():
     """Show demographic analytics"""
@@ -841,3 +844,182 @@ def run_full_survey(persona_limit):
         st.error(f"Survey failed: {e}")
 if __name__ == "__main__":
     main()
+def show_research_archive():
+    """Research archive management interface"""
+    st.subheader("Research Archive Management")
+    
+    # Import the research archiver
+    from research import ResearchArchiver
+    
+    # Create tabs for different archive operations
+    archive_tab1, archive_tab2, archive_tab3 = st.tabs(["📦 Archive Current", "📋 View Archives", "🔄 Restore Archive"])
+    
+    with archive_tab1:
+        st.subheader("Archive Current Research")
+        
+        personas = st.session_state.database.get_all_personas()
+        
+        if not personas:
+            st.info("No research data to archive. Generate or import personas first.")
+        else:
+            st.write(f"**Current research data:**")
+            st.write(f"- Personas: {len(personas)}")
+            completed_surveys = len([p for p in personas if p.response_history])
+            st.write(f"- Completed surveys: {completed_surveys}")
+            
+            with st.form("archive_form"):
+                research_name = st.text_input("Research Name*", placeholder="e.g., AI_Adoption_Study_2025")
+                description = st.text_area("Description", placeholder="Brief description of this research...")
+                
+                col1, col2 = st.columns(2)
+                
+                with col1:
+                    archive_only = st.form_submit_button("📦 Archive Only", type="secondary")
+                
+                with col2:
+                    archive_and_clear = st.form_submit_button("📦 Archive & Clear", type="primary")
+                
+                if archive_only and research_name:
+                    with st.spinner("Creating archive..."):
+                        try:
+                            archiver = ResearchArchiver()
+                            result = archiver.create_archive(research_name, description)
+                            
+                            st.success("✅ Research archived successfully!")
+                            st.write(f"**Archive:** {result['archive_name']}")
+                            st.write(f"**Location:** {result['archive_path']}")
+                            st.write(f"**Personas:** {result['personas_count']}")
+                            st.write(f"**Surveys:** {result['surveys_count']}")
+                            
+                        except Exception as e:
+                            st.error(f"Archive failed: {e}")
+                
+                elif archive_and_clear and research_name:
+                    st.warning("⚠️ This will archive current data and clear the database for new research!")
+                    
+                    if st.checkbox("I understand this will clear all current data"):
+                        with st.spinner("Archiving and clearing..."):
+                            try:
+                                archiver = ResearchArchiver()
+                                result = archiver.archive_and_clear(research_name, description)
+                                
+                                st.success("🎉 Research archived and system cleared!")
+                                st.write(f"**Archive:** {result['archive_name']}")
+                                st.write(f"**Archived:** {result['archived_personas']} personas, {result['archived_surveys']} surveys")
+                                st.write(f"**Cleared:** {result['cleared_personas']} personas")
+                                st.info("System is now ready for new research!")
+                                
+                                # Refresh the page to show empty state
+                                st.rerun()
+                                
+                            except Exception as e:
+                                st.error(f"Archive and clear failed: {e}")
+                
+                elif (archive_only or archive_and_clear) and not research_name:
+                    st.error("Please enter a research name")
+    
+    with archive_tab2:
+        st.subheader("Available Archives")
+        
+        try:
+            archiver = ResearchArchiver()
+            archives = archiver.list_archives()
+            
+            if not archives:
+                st.info("No research archives found.")
+            else:
+                st.write(f"Found {len(archives)} research archives:")
+                
+                for archive in archives:
+                    with st.expander(f"📁 {archive['research_name']} ({archive['created_at'][:10]})"):
+                        col1, col2 = st.columns(2)
+                        
+                        with col1:
+                            st.write(f"**Archive Name:** {archive['archive_name']}")
+                            st.write(f"**Created:** {archive['created_at']}")
+                            st.write(f"**Personas:** {archive['personas_count']}")
+                            st.write(f"**Surveys:** {archive['surveys_count']}")
+                        
+                        with col2:
+                            if archive['description']:
+                                st.write(f"**Description:** {archive['description']}")
+                            st.write(f"**Location:** {archive['archive_path']}")
+                        
+                        # Quick restore button
+                        if st.button(f"🔄 Restore {archive['research_name']}", key=f"restore_{archive['archive_name']}"):
+                            st.session_state.restore_archive = archive['archive_name']
+                            st.rerun()
+        
+        except Exception as e:
+            st.error(f"Error loading archives: {e}")
+    
+    with archive_tab3:
+        st.subheader("Restore Research Archive")
+        
+        # Handle restore action from archive list
+        if hasattr(st.session_state, 'restore_archive'):
+            archive_name = st.session_state.restore_archive
+            del st.session_state.restore_archive
+            
+            st.warning(f"⚠️ Restoring '{archive_name}' will overwrite all current research data!")
+            
+            col1, col2 = st.columns(2)
+            
+            with col1:
+                if st.button("✅ Confirm Restore", type="primary"):
+                    with st.spinner("Restoring research..."):
+                        try:
+                            archiver = ResearchArchiver()
+                            result = archiver.restore_archive(archive_name)
+                            
+                            st.success("🎉 Research restored successfully!")
+                            st.write(f"**Archive:** {result['archive_name']}")
+                            st.write(f"**Restored:** {result['restored_personas']} personas")
+                            st.info("Research data is now active!")
+                            
+                            # Refresh to show restored data
+                            st.rerun()
+                            
+                        except Exception as e:
+                            st.error(f"Restore failed: {e}")
+            
+            with col2:
+                if st.button("❌ Cancel"):
+                    st.rerun()
+        
+        else:
+            # Manual restore interface
+            try:
+                archiver = ResearchArchiver()
+                archives = archiver.list_archives()
+                
+                if not archives:
+                    st.info("No archives available to restore.")
+                else:
+                    archive_names = [f"{a['research_name']} ({a['archive_name']})" for a in archives]
+                    selected = st.selectbox("Select archive to restore:", [""] + archive_names)
+                    
+                    if selected:
+                        # Extract archive name from selection
+                        archive_name = selected.split("(")[1].rstrip(")")
+                        
+                        st.warning("⚠️ This will overwrite all current research data!")
+                        
+                        if st.button("🔄 Restore Selected Archive", type="primary"):
+                            if st.checkbox("I understand this will overwrite current data"):
+                                with st.spinner("Restoring research..."):
+                                    try:
+                                        result = archiver.restore_archive(archive_name)
+                                        
+                                        st.success("🎉 Research restored successfully!")
+                                        st.write(f"**Archive:** {result['archive_name']}")
+                                        st.write(f"**Restored:** {result['restored_personas']} personas")
+                                        
+                                        # Refresh to show restored data
+                                        st.rerun()
+                                        
+                                    except Exception as e:
+                                        st.error(f"Restore failed: {e}")
+            
+            except Exception as e:
+                st.error(f"Error loading archives: {e}")
