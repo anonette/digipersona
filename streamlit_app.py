@@ -842,8 +842,6 @@ def run_full_survey(persona_limit):
         
     except Exception as e:
         st.error(f"Survey failed: {e}")
-if __name__ == "__main__":
-    main()
 def show_research_archive():
     """Research archive management interface"""
     st.subheader("Research Archive Management")
@@ -1023,3 +1021,5 @@ def show_research_archive():
             
             except Exception as e:
                 st.error(f"Error loading archives: {e}")
+if __name__ == "__main__":
+    main()
